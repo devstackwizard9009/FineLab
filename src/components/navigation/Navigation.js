@@ -1,0 +1,38 @@
+import React from 'react';
+import NavigationItem from './Router';
+import './navigation.css';
+
+function Navigation({ library, search, map, profil, setting, position,para_txt,profil_txt }) {
+  const list = document.querySelectorAll('.list');
+  
+  function activeLink() {
+    list.forEach((item) => item.classList.remove('active'));
+    this.classList.add('active');
+  }
+
+  list.forEach((item) => item.addEventListener('click', activeLink));
+
+  const footerStyle = {
+    position: position ? 'absolute' : 'relative',
+  };
+
+  return (
+    <footer style={footerStyle}>
+      <div className="navigation">
+        <ul>
+          <NavigationItem icon="cash-outline" text="Stockage" active={library} />
+          <NavigationItem icon="search-outline" text="IAssistant" active={search} />
+          <NavigationItem icon="storefront-outline" text="Accueil" active={map} />
+          <NavigationItem icon="happy-outline" text={profil_txt} active={profil} />
+          <NavigationItem icon="construct-outline" text={para_txt} active={setting} />
+          <div className="nav-animation"></div>
+        </ul>
+        <span className="nav-slogan">Votre système de gestion FineLab</span>
+      </div>
+    </footer>
+  );
+}
+
+export default Navigation;
+
+
